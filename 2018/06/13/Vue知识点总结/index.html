@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>前端-Vue知识点总结（持续更新）-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<meta name="keywords" content="vue,tools,总结,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+	<meta name="generator" content="Hexo 5.3.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>fangzide</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/vue">vue</a></li>
+            
+            <li><a href="/tags/tools">tools</a></li>
+            
+            <li><a href="/tags/总结">总结</a></li>
+            
+            
+        </ul>
+        <h1>前端-Vue知识点总结（持续更新）</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">fangzide</a></span>
+                <p>2018-06-13 11:13:11</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h2 id="Vue-概述"><a href="#Vue-概述" class="headerlink" title="Vue 概述"></a>Vue 概述</h2><h3 id="1、what"><a href="#1、what" class="headerlink" title="1、what"></a>1、what</h3><pre><code>是一个渐进式的构建用户界面的js框架</code></pre>
+<h3 id="2、where"><a href="#2、where" class="headerlink" title="2、where"></a>2、where</h3><pre><code>小到的简单的表单处理，大到复杂的数据操作比较频繁的单页面应用程序</code></pre>
+<h3 id="3、why"><a href="#3、why" class="headerlink" title="3、why"></a>3、why</h3><pre><code>1.中文文档很完善，很方便阅读社区活跃
+2.学习曲线比较缓和
+3.体积小
+4.基于组件化的开发方式，增强复用协作
+5.代码的可读性、可维护性得到了提高
+6.各类UI库支持如 elementUI 快速搭建可观性强的前端界面 如后台管理系统 有丰富的成型的组件</code></pre>
+<h3 id="4、how"><a href="#4、how" class="headerlink" title="4、how"></a>4、how</h3><pre><code>工作方式：可以通过丰富的指令扩展模板，可以通过各种各样的插件来增强功能
+
+搭建环境：
+方式1
+     全局安装 vue-cli
+    $ npm install --global vue-cli
+    # 创建一个基于 webpack 模板的新项目
+    $ vue init webpack my-project
+    # 安装依赖，走你
+    $ cd my-project
+    $ npm install
+    $ npm run dev
+方式2:
+    直接引入对应的js文件</code></pre>
+<h2 id="Vue中基础知识"><a href="#Vue中基础知识" class="headerlink" title="Vue中基础知识"></a>Vue中基础知识</h2><h3 id="1、双花括号"><a href="#1、双花括号" class="headerlink" title="1、双花括号"></a>1、双花括号</h3><pre><code>mustache(胡子)/interpolation（插值表达式）
+
+语法：
+// &lt;any&gt;&#123;&#123;表达式&#125;&#125;&lt;/any&gt;
+作用：
+将表达式执行的结果 输出当调用元素的innerHTML中；还可以将数据绑定到视图</code></pre>
+<h3 id="2、指令-循环指令"><a href="#2、指令-循环指令" class="headerlink" title="2、指令-循环指令"></a>2、指令-循环指令</h3><pre><code>基本语法1：
+// &lt;any v-for=&quot;tmp in array&quot;&gt;&lt;/any&gt;
+基本语法2：
+// &lt;any v-for=&quot;(value,index) in array&quot;&gt;&lt;/any&gt;</code></pre>
+<p>作用：在遍历array这个集合时，将临时变量保存在tmp中，创建多个any标签</p>
+<h3 id="3、指令-选择指令"><a href="#3、指令-选择指令" class="headerlink" title="3、指令-选择指令"></a>3、指令-选择指令</h3><pre><code>语法：
+  &lt;any v-if=&quot;表达式&quot;&gt;&lt;/any&gt;
+  &lt;any v-else-if=&quot;表达式&quot;&gt;&lt;/any&gt;
+  &lt;any v-else=&quot;表达式&quot;&gt;&lt;/any&gt;
+作用：
+  根据表达式执行结果的真假，来决定是否要将当前的这个元素 挂载到DOM树</code></pre>
+<h3 id="4、指令-事件绑定"><a href="#4、指令-事件绑定" class="headerlink" title="4、指令-事件绑定"></a>4、指令-事件绑定</h3><pre><code>语法：
+    &lt;any v-on:eventName=&quot;handleEvent&quot;&gt;&lt;/any&gt;
+作用：
+    给指定的元素 将handleEvent的方法绑定给指定eventName事件</code></pre>
+<h3 id="5、指令-属性绑定"><a href="#5、指令-属性绑定" class="headerlink" title="5、指令-属性绑定"></a>5、指令-属性绑定</h3><p>  基本语法：<br>    // <any v-bind:myProp="表达式"></any><br>    补充，支持简写：<br>    <any :myProp="表达式"></any></p>
+<p>  作用：<br>    将表达式执行的结果 绑定 到当前元素的myProp属性<br>          <img v-bind:src="'img/'+myImg" alt=""></p>
+<pre><code> // 动态样式绑定
+   &lt;p :style=&quot;&#123;backgroundColor:myBGColor&#125;&quot;&gt;动态样式绑定&lt;/p&gt;
+
+ // 动态样式类绑定
+  &lt;h1 :class=&quot;&#123;myRed:false&#125;&quot;&gt;动态样式类的绑定&lt;/h1&gt;</code></pre>
+<h3 id="6、指令-双向数据绑定"><a href="#6、指令-双向数据绑定" class="headerlink" title="6、指令-双向数据绑定"></a>6、指令-双向数据绑定</h3><pre><code>方向1：数据绑定到视图
+方向2：将视图中（表单元素）用户操作的结果绑定到数据
+
+基本语法:
+  &lt;表单元素 v-model=&quot;变量&quot;&gt;
+  &lt;/表单元素&gt;</code></pre>
+<h3 id="7、自定义指令"><a href="#7、自定义指令" class="headerlink" title="7、自定义指令"></a>7、自定义指令</h3><h4 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h4><pre><code>Vue.directive(&#39;test&#39;, &#123;
+    //指令选项
+&#125;)</code></pre>
+<h4 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h4><pre><code>var app = new Vue(&#123;
+    el: &#39;#app&#39;,
+    directieve: &#123;
+    test: &#123;
+        //指令选项
+    &#125;
+   &#125;&#125;)</code></pre>
+<h4 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h4><pre><code>    bind： 只调用一次，在绑定到元素时调用，通常是在绑定时执行一次初始化的动作。
+    inserted： 被绑定元素插入父节点时调用，如上面例子中使用的，元素在初始化时自动获取焦点。
+    update： 被绑定元素所在的模板更新是调用，不论绑定值是否有变化。
+    componentUpdated：被绑定元素所在的模板完成一次更新周期时调用。
+    unbing： 只调用一次，指令与元素解绑时调用。</code></pre>
+<h2 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h2><h3 id="1、watch"><a href="#1、watch" class="headerlink" title="1、watch"></a>1、watch</h3><h4 id="1-表单元素的双向数据绑定"><a href="#1-表单元素的双向数据绑定" class="headerlink" title="1. 表单元素的双向数据绑定"></a>1. 表单元素的双向数据绑定</h4><p>   v-model=”myValue”</p>
+<h4 id="2-监听"><a href="#2-监听" class="headerlink" title="2.监听"></a>2.监听</h4><pre><code>    watch:&#123;
+    myValue:function(newValue,oldValue)&#123;
+
+    &#125;&#125;</code></pre>
+<h3 id="2、computed"><a href="#2、computed" class="headerlink" title="2、computed"></a>2、computed</h3><pre><code>计算属于是用于在模板中，搞定复杂的业务逻辑，因为有依赖缓存。</code></pre>
+<h4 id="1-指定计算属性"><a href="#1-指定计算属性" class="headerlink" title="1.指定计算属性"></a>1.指定计算属性</h4><pre><code>    computed:&#123;
+      myHandle:function()&#123;
+       return 数据
+      &#125;
+    &#125;</code></pre>
+<h4 id="2-调用"><a href="#2-调用" class="headerlink" title="2.调用"></a>2.调用</h4><pre><code>    &lt;any&gt;&#123;&#123;myHandle&#125;&#125;&lt;/any&gt;</code></pre>
+<h2 id="vue组件化-及组件间的通信"><a href="#vue组件化-及组件间的通信" class="headerlink" title="vue组件化 及组件间的通信"></a>vue组件化 及组件间的通信</h2><p>组件：组件就是可被反复使用的，带有特定功能的视图</p>
+<p>所谓的组件化，就像玩积木一样，把封装的组件进行复用,把积木（组件）拼接在一起，构成一个复杂的页面应用程序。</p>
+<p>组件树就是由各个组件构成的一种数据结构，它存在的意义是为了帮梳理应用程序</p>
+<h3 id="1、组件的创建"><a href="#1、组件的创建" class="headerlink" title="1、组件的创建"></a>1、组件的创建</h3><p>  全局组件<br>    Vue.component(‘my-com’,{<br>      template:<code>        &lt;h2&gt;it is a header&lt;/h2&gt;      </code><br>    })<br>      局部组件<br>    new Vue({<br>        components:{<br>            ‘my-footer’:{<br>           template:’’<br>         }<br>        }<br>    })</p>
+<h3 id="2、组件使用"><a href="#2、组件使用" class="headerlink" title="2、组件使用"></a>2、组件使用</h3><pre><code>作为普通的标签去使用
+&lt;my-com&gt;&lt;/my-com&gt;</code></pre>
+<h3 id="3、注意事项"><a href="#3、注意事项" class="headerlink" title="3、注意事项"></a>3、注意事项</h3><ul>
+<li><pre><code>1.组件的id和使用方式 遵循烤串式命名方式：a-b-c </code></pre>
+</li>
+<li><pre><code>2.如果一个组件 要渲染多个元素，将多个元素放在一个顶层标签中，比如div、form</code></pre>
+</li>
+<li><pre><code>3.全局组件可以用在id为example的范围内的任何一个组件内部，直接调用可以；但是局部组件只能在父模板中直接调用</code></pre>
+</li>
+</ul>
+<h3 id="组件间的通信"><a href="#组件间的通信" class="headerlink" title="组件间的通信"></a>组件间的通信</h3><h4 id="1、父与子通信-（props-down）"><a href="#1、父与子通信-（props-down）" class="headerlink" title="1、父与子通信 （props down）"></a>1、父与子通信 （props down）</h4><pre><code>1.发送
+    &lt;son myName=&#39;zhangsan&#39;&gt;
+    &lt;/son&gt;
+2.接受
+    到son组件：
+    Vue.component(&#39;son&#39;,&#123;
+      props:[&#39;myName&#39;],
+      template:`
+       &lt;p&gt;&#123;&#123;myName&#125;&#125;&lt;/p&gt;
+      `
+    &#125;)</code></pre>
+<h4 id="2、子与父通信-events-up"><a href="#2、子与父通信-events-up" class="headerlink" title="2、子与父通信 (events up)"></a>2、子与父通信 (events up)</h4><pre><code> 1.绑定
+methods:&#123;
+ handleEvent:function(msg)&#123;&#125;
+&#125;
+&lt;son @customEvent=&quot;handleEvent&quot;&gt;&lt;/son&gt;
+2.触发子组件内部：
+// this.$emit(‘customEvent’,100);
+
+3、ref(reference 引用/参考 外号)</code></pre>
+<p> 帮助在父组件中 得到子组件中的数据、方法。<br>        1.指定ref属性<br>        <son ref="mySon"></son></p>
+<pre><code>    2.根据ref得到子组件实例
+    this.$refs.mySon
+
+4、$parent
+this.$parent得到父组件的实例
+
+5、兄弟组件通信
+    1.var bus = new Vue();
+    2.接收方
+    bus.$on(&#39;eventName&#39;,function(msg)&#123;&#125;)
+    3.发送方
+    bus.$emit(&#39;eventName&#39;,123);
+
+6、vux共享组件状态</code></pre>
+<h2 id="Vue-生命周期"><a href="#Vue-生命周期" class="headerlink" title="Vue 生命周期"></a>Vue 生命周期</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">四个阶段：<br>    create 准备工作 （数据的初始化。。。）<br>    mount  挂载前后针对元素进行操作<br>    update 数据发生变化，<br>    destroy 清理工作 (关闭定时器、集合清空..)<br><br>    beforeCreate/created<br>    beforeMount/mounted<br>    beforeUpdate/updated<br>    beforeDestroy/destroyed<br><br></code></pre></td></tr></table></figure>
+<h2 id="Vue-推荐的请求-axios"><a href="#Vue-推荐的请求-axios" class="headerlink" title="Vue 推荐的请求 axios"></a>Vue 推荐的请求 axios</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-number">1.</span>axios的get方法<br><br>    <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getAjax= <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">getUrl,getAjaxData</span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> axios.get(getUrl, &#123;<br>        params: &#123;<br>          <span class="hljs-string">&#x27;getAjaxDataObj1&#x27;</span>: getAjaxData.obj1,<span class="hljs-comment">//obj1为getAjaxData的一个属性</span><br>          <span class="hljs-string">&#x27;getAjaxDataObj2&#x27;</span>: getAjaxData.obj2<br>        &#125;<br>      &#125;)<br>    &#125;<br><span class="hljs-number">2.</span>axios的post方法<br><br>    <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> postAjax= <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">getUrl,postAjaxData</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> axios.get(postUrl, &#123;<br>    <br>      <span class="hljs-string">&#x27;postAjaxDataObj1&#x27;</span>: postAjaxData.obj1,<span class="hljs-comment">//obj1为postAjaxData的一个属性</span><br>      <span class="hljs-string">&#x27;postAjaxDataObj2&#x27;</span>: postAjaxData.obj2<br>    &#125;)<br>    &#125;<br><br><span class="hljs-number">3.</span>axios的拦截器<br>主要分为请求和响应两种拦截器,请求拦截一般就是配置对应的请求头信息(适用与常见请求方法,虽然ajax的get方法没有请求头,但是axios里面进行啦封装),响应一般就是对reponse进行拦截处理,如果返回结果为[]可以转化为<span class="hljs-number">0</span><br><br>    <span class="hljs-number">1.</span>请求拦截:将当前城市信息放入请求头中<br><br>    axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;<br>        config.headers.cityCode = <span class="hljs-built_in">window</span>.sessionStorage.cityCode <br>        <span class="hljs-comment">//jsCookie.get(&#x27;cityCode&#x27;)</span><br>        <span class="hljs-keyword">return</span> config<br>    &#125;,<br><br>    <span class="hljs-number">2.</span>响应拦截:处理reponse的结果<br><br>        axios.interceptors.response.use(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span>&#123;<br>          <span class="hljs-keyword">let</span> data = response.data<br>          <span class="hljs-keyword">if</span>(response.request.responseType === <span class="hljs-string">&#x27;arraybuffer&#x27;</span>&amp;&amp;!data.length)&#123;<br>            reponse.date=<span class="hljs-number">0</span><br>          &#125;<br>        &#125;)<br></code></pre></td></tr></table></figure>
+
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+    <a href="/2018/07/10/%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84js%E5%BA%93/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>打造自己的js库</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2018/03/20/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>一些面试总结</p>
+        </div>
+    </a>
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+</script>
+	</body>
+
+</html>

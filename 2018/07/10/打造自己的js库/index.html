@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>打造自己的js库-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<meta name="keywords" content="javascript,tools,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+	<meta name="generator" content="Hexo 5.3.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>fangzide</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/javascript">javascript</a></li>
+            
+            <li><a href="/tags/tools">tools</a></li>
+            
+            
+        </ul>
+        <h1>打造自己的js库</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">fangzide</a></span>
+                <p>2018-07-10 10:18:11</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <h2 id="格式化现在距-str-过去了的时间-formatDate-str"><a href="#格式化现在距-str-过去了的时间-formatDate-str" class="headerlink" title="格式化现在距${str}过去了的时间  formatDate(str)"></a>格式化现在距${str}过去了的时间  formatDate(str)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化现在距$&#123;str&#125;过去了的时间</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> <span class="hljs-variable">str</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>格式化后的时间</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> formatDate = <span class="hljs-function">(<span class="hljs-params">str</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!str) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">const</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(str);<br>  <span class="hljs-keyword">const</span> time = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() - date.getTime(); <span class="hljs-comment">// 现在的时间-传入的时间 = 相差的时间（单位 = 毫秒）</span><br>  <span class="hljs-keyword">if</span> (time &lt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((time / <span class="hljs-number">1000</span> &lt; <span class="hljs-number">30</span>)) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;刚刚&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (time / <span class="hljs-number">1000</span> &lt; <span class="hljs-number">60</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>((time / <span class="hljs-number">1000</span>)) + <span class="hljs-string">&#x27;秒前&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((time / <span class="hljs-number">60000</span>) &lt; <span class="hljs-number">60</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>((time / <span class="hljs-number">60000</span>)) + <span class="hljs-string">&#x27;分钟前&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((time / <span class="hljs-number">3600000</span>) &lt; <span class="hljs-number">24</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(time / <span class="hljs-number">3600000</span>) + <span class="hljs-string">&#x27;小时前&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((time / <span class="hljs-number">86400000</span>) &lt; <span class="hljs-number">31</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(time / <span class="hljs-number">86400000</span>) + <span class="hljs-string">&#x27;天前&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((time / <span class="hljs-number">2592000000</span>) &lt; <span class="hljs-number">12</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(time / <span class="hljs-number">2592000000</span>) + <span class="hljs-string">&#x27;个月前&#x27;</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">parseInt</span>(time / <span class="hljs-number">31536000000</span>) + <span class="hljs-string">&#x27;年前&#x27;</span>;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="格式化现在距-endTime-的剩余时间formatRemainTime-endTime"><a href="#格式化现在距-endTime-的剩余时间formatRemainTime-endTime" class="headerlink" title="格式化现在距${endTime}的剩余时间formatRemainTime(endTime)"></a>格式化现在距${endTime}的剩余时间formatRemainTime(endTime)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@desc   </span>格式化现在距$&#123;endTime&#125;的剩余时间</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param  <span class="hljs-type">&#123;Date&#125;</span> <span class="hljs-variable">endTime</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;String&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> formatRemainTime = <span class="hljs-function">(<span class="hljs-params">endTime</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> startDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(); <span class="hljs-comment">// 开始时间</span><br>  <span class="hljs-keyword">const</span> endDate = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(endTime); <span class="hljs-comment">// 结束时间</span><br>  <span class="hljs-keyword">const</span> t = endDate.getTime() - startDate.getTime(); <span class="hljs-comment">// 时间差</span><br>  <span class="hljs-keyword">let</span> d = <span class="hljs-number">0</span>,<br>    h = <span class="hljs-number">0</span>,<br>    m = <span class="hljs-number">0</span>,<br>    s = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">if</span> (t &gt;= <span class="hljs-number">0</span>) &#123;<br>    d = <span class="hljs-built_in">Math</span>.floor(t / <span class="hljs-number">1000</span> / <span class="hljs-number">3600</span> / <span class="hljs-number">24</span>);<br>    h = <span class="hljs-built_in">Math</span>.floor(t / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> % <span class="hljs-number">24</span>);<br>    m = <span class="hljs-built_in">Math</span>.floor(t / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> % <span class="hljs-number">60</span>);<br>    s = <span class="hljs-built_in">Math</span>.floor(t / <span class="hljs-number">1000</span> % <span class="hljs-number">60</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> d + <span class="hljs-string">&#x27;天 &#x27;</span> + h + <span class="hljs-string">&#x27;小时 &#x27;</span> + m + <span class="hljs-string">&#x27;分钟 &#x27;</span> + s + <span class="hljs-string">&#x27;秒&#x27;</span>;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+<h2 id="格式化日期时间字符串-formatDateStr-d-format-d-Date对象-格式pattern-默认为’yyyy-MM-dd’，常用格式比如：’yyyy-MM-dd-hh-mm-ss’…"><a href="#格式化日期时间字符串-formatDateStr-d-format-d-Date对象-格式pattern-默认为’yyyy-MM-dd’，常用格式比如：’yyyy-MM-dd-hh-mm-ss’…" class="headerlink" title="格式化日期时间字符串 formatDateStr(d,format)(d: Date对象,格式pattern:默认为’yyyy-MM-dd’，常用格式比如：’yyyy-MM-dd hh:mm:ss’…)"></a>格式化日期时间字符串 formatDateStr(d,format)(d: Date对象,格式pattern:默认为’yyyy-MM-dd’，常用格式比如：’yyyy-MM-dd hh:mm:ss’…)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 格式化日期时间字符串</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>d Date对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>format 格式pattern，默认为&#x27;yyyy-MM-dd&#x27;，常用格式比如：&#x27;yyyy-MM-dd hh:mm:ss&#x27;</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>格式化后的字符串</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> formatDateStr = <span class="hljs-function">(<span class="hljs-params">d, format = <span class="hljs-string">&#x27;yyyy-MM-dd&#x27;</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!d || !d.getTime) <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;<br>  <span class="hljs-keyword">const</span> o = &#123;<br>    <span class="hljs-string">&#x27;M+&#x27;</span>: d.getMonth() + <span class="hljs-number">1</span>, <span class="hljs-comment">// month</span><br>    <span class="hljs-string">&#x27;d+&#x27;</span>: d.getDate(), <span class="hljs-comment">// day</span><br>    <span class="hljs-string">&#x27;h+&#x27;</span>: d.getHours(), <span class="hljs-comment">// hour</span><br>    <span class="hljs-string">&#x27;m+&#x27;</span>: d.getMinutes(), <span class="hljs-comment">// minute</span><br>    <span class="hljs-string">&#x27;s+&#x27;</span>: d.getSeconds(), <span class="hljs-comment">// second</span><br>    <span class="hljs-string">&#x27;q+&#x27;</span>: <span class="hljs-built_in">Math</span>.floor((d.getMonth() + <span class="hljs-number">3</span>) / <span class="hljs-number">3</span>), <span class="hljs-comment">// quarter</span><br>    S: d.getMilliseconds() <span class="hljs-comment">// millisecond</span><br>  &#125;;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-regexp">/(y+)/</span>.test(format)) &#123;<br>    format = format.replace(<span class="hljs-built_in">RegExp</span>.$1, (d.getFullYear() + <span class="hljs-string">&#x27;&#x27;</span>).substr(<span class="hljs-number">4</span> - <span class="hljs-built_in">RegExp</span>.$1.length));<br>  &#125;<br>  <span class="hljs-built_in">Object</span>.keys(o).forEach(<span class="hljs-function"><span class="hljs-params">k</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;(&#x27;</span> + k + <span class="hljs-string">&#x27;)&#x27;</span>).test(format)) &#123;<br>      format = format.replace(<span class="hljs-built_in">RegExp</span>.$1, <span class="hljs-built_in">RegExp</span>.$1.length === <span class="hljs-number">1</span> ? o[k] : (<span class="hljs-string">&#x27;00&#x27;</span> + o[k]).substr((<span class="hljs-string">&#x27;&#x27;</span> + o[k]).length));<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> format;<br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
+
+<h2 id="检索url-？后的参数，-根据name查找并返回匹配的-后的值-getQueryStringByName-name"><a href="#检索url-？后的参数，-根据name查找并返回匹配的-后的值-getQueryStringByName-name" class="headerlink" title="检索url ？后的参数， 根据name查找并返回匹配的=后的值 getQueryStringByName(name)"></a>检索url ？后的参数， 根据name查找并返回匹配的=后的值 getQueryStringByName(name)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 检索url， 查找并返回匹配正则表达式的值</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>name 需要匹配的字段</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>匹配到字段的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> getQueryStringByName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> result = location.search.match(<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&#x27;[\?\&amp;]&#x27;</span> + name + <span class="hljs-string">&#x27;=([^\&amp;]+)&#x27;</span>, <span class="hljs-string">&#x27;i&#x27;</span>));<br>  <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span> || result.length &lt; <span class="hljs-number">1</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> result[<span class="hljs-number">1</span>];<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="按属性过滤数组中的对象-propsFilter-items-props-exactly"><a href="#按属性过滤数组中的对象-propsFilter-items-props-exactly" class="headerlink" title="按属性过滤数组中的对象 propsFilter(items, props, exactly)"></a>按属性过滤数组中的对象 propsFilter(items, props, exactly)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 按属性过滤数组中的对象</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Array&#125;</span> </span>items 数组</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>props 属性过滤条件对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Boolean&#125;</span> </span>exactly 是否使用===判定， 默认false</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Array&#125;</span> </span>过滤后的数组</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> propsFilter = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">items, props, exactly</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">Array</span>.isArray) &#123;<br>    <span class="hljs-built_in">Array</span>.isArray = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg</span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.prototype.toString.call(arg) === <span class="hljs-string">&#x27;[object Array]&#x27;</span>;<br>    &#125;;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(items)) &#123;<br>    <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(props);<br>    <span class="hljs-keyword">return</span> items.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> keys.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key</span>) </span>&#123;<br>        <span class="hljs-keyword">if</span> (exactly) &#123;<br>          <span class="hljs-keyword">return</span> item[key] === props[key];<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-keyword">const</span> text = (props[key] + <span class="hljs-string">&#x27;&#x27;</span>).toLowerCase();<br>          <span class="hljs-keyword">return</span> item[key] &amp;&amp; item[key].toString().toLowerCase().indexOf(text) &gt; -<span class="hljs-number">1</span>;<br>        &#125;<br>      &#125;);<br>    &#125;);<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> items;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="清除对象中值为空的属性-过滤params-cleanParams-obj"><a href="#清除对象中值为空的属性-过滤params-cleanParams-obj" class="headerlink" title="清除对象中值为空的属性 过滤params cleanParams(obj)"></a>清除对象中值为空的属性 过滤params cleanParams(obj)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 清除对象中值为空的属性</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Object&#125;</span> </span>需要清理的对象</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;Object&#125;</span> </span>清理后的对象</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> cleanParams = <span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> p = &#123;&#125;;<br>  <span class="hljs-built_in">Object</span>.keys(data).forEach(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> obj = data[key];<br>    <span class="hljs-keyword">if</span> (obj !== <span class="hljs-string">&#x27;&#x27;</span>) &#123;<br>      p[key] = obj;<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> p;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="判断obj是否为空-isEmptyObject-obj"><a href="#判断obj是否为空-isEmptyObject-obj" class="headerlink" title="判断obj是否为空 isEmptyObject(obj)"></a>判断<code>obj</code>是否为空 isEmptyObject(obj)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@desc   </span>判断`obj`是否为空</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param  <span class="hljs-type">&#123;Object&#125;</span> <span class="hljs-variable">obj</span></span></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">&#123;Boolean&#125;</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> isEmptyObject = <span class="hljs-function">(<span class="hljs-params">obj</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">if</span> (!obj || <span class="hljs-keyword">typeof</span> obj !== <span class="hljs-string">&#x27;object&#x27;</span> || <span class="hljs-built_in">Array</span>.isArray(obj)) &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; &#125;<br>  <span class="hljs-keyword">return</span> !<span class="hljs-built_in">Object</span>.keys(obj).length;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="获取文件扩展名filePostfix"><a href="#获取文件扩展名filePostfix" class="headerlink" title="获取文件扩展名filePostfix"></a>获取文件扩展名filePostfix</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取文件扩展名</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;String&#125;</span> </span>fileName 文件名</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@returns <span class="hljs-type">&#123;String&#125;</span> </span>文件扩展名</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> filePostfix = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fileName</span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> pattern = <span class="hljs-regexp">/(.*)\.(.*)$/gi</span>;<br>  pattern.exec(fileName.toLowerCase());<br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">RegExp</span>.$2;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h2 id="深拷贝-deepClone-values"><a href="#深拷贝-deepClone-values" class="headerlink" title="深拷贝 deepClone(values)"></a>深拷贝 deepClone(values)</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@desc </span>深拷贝，支持常见类型</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">&#123;Any&#125;</span> <span class="hljs-variable">values</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> deepClone = <span class="hljs-function">(<span class="hljs-params">values</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">let</span> copy;<br><br>  <span class="hljs-comment">// Handle the 3 simple types, and null or undefined</span><br>  <span class="hljs-keyword">if</span> (values == <span class="hljs-literal">null</span> || <span class="hljs-keyword">typeof</span> values !== <span class="hljs-string">&#x27;object&#x27;</span>) <span class="hljs-keyword">return</span> values;<br><br>  <span class="hljs-comment">// Handle Date</span><br>  <span class="hljs-keyword">if</span> (values <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>) &#123;<br>    copy = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();<br>    copy.setTime(values.getTime());<br>    <span class="hljs-keyword">return</span> copy;<br>  &#125;<br><br>  <span class="hljs-comment">// Handle Array</span><br>  <span class="hljs-keyword">if</span> (values <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>) &#123;<br>    copy = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, len = values.length; i &lt; len; i++) &#123;<br>      copy[i] = deepClone(values[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> copy;<br>  &#125;<br><br>  <span class="hljs-comment">// Handle Object</span><br>  <span class="hljs-keyword">if</span> (values <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>) &#123;<br>    copy = &#123;&#125;;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> attr <span class="hljs-keyword">in</span> values) &#123;<br>      <span class="hljs-keyword">if</span> (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> copy;<br>  &#125;<br><br>  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Unable to copy values! Its type isn&#x27;t supported.&quot;</span>);<br>&#125;;<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+    <a href="/2021/01/02/hello-world/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>Hello World</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2018/06/13/Vue%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+        <div class="next">
+            <span>下一篇</span>
+            <p>前端-Vue知识点总结（持续更新）</p>
+        </div>
+    </a>
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+</script>
+	</body>
+
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+<title>zepto遇到的各种坑-Quiet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+
+<meta name="keywords" content="移动端,zepto,">
+<meta name="description" content="">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+	<meta name="generator" content="Hexo 5.3.0"></head>
+
+	<body>
+		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
+	<div class="header">
+		<div class="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>fangzide</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+    </div>
+</div>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
+</div>
+<style>
+    .sidebar {
+        width: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
+</script>
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg ">
+    <div class="bg-content">
+        <ul class="tag">
+            
+            
+            <li><a href="/tags/移动端">移动端</a></li>
+            
+            <li><a href="/tags/zepto">zepto</a></li>
+            
+            
+        </ul>
+        <h1>zepto遇到的各种坑</h1>
+        <div class="article-info">
+            <div class="article-author">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                    <g>
+                        <path fill="#12183A"
+                            d="M6.187 15.265A6.47 6.47 0 0 0 10 16.5a6.47 6.47 0 0 0 3.813-1.235A4.99 4.99 0 0 0 10 13.5a4.99 4.99 0 0 0-3.813 1.765zM5.082 14.25A6.485 6.485 0 0 1 10 12c1.965 0 3.726.872 4.918 2.25a6.5 6.5 0 1 0-9.836 0zM10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-1.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
+                        </path>
+                    </g>
+                </svg>
+                
+                <span> <a href="">fangzide</a></span>
+                <p>2017-02-26 10:18:11</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="article-content">
+    <div id="article" class="content">
+        <p><strong>移动端精简框架zepto，在开发过程中遇到的各种坑~总结</strong></p>
+<h3 id="1、编译zepto。模块之前可能有依赖关系，整体顺序参考下面这个即可"><a href="#1、编译zepto。模块之前可能有依赖关系，整体顺序参考下面这个即可" class="headerlink" title="1、编译zepto。模块之前可能有依赖关系，整体顺序参考下面这个即可:"></a>1、编译zepto。模块之前可能有依赖关系，整体顺序参考下面这个即可:</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><br>MODULES=<span class="hljs-string">&quot;zepto event ajax form ie detect fx fx_methods assets data deferred callbacks selector touch gesture stack ios3&quot;</span> npm run-script dist<br><br></code></pre></td></tr></table></figure>
+<h3 id="2、支持requirejs。在"><a href="#2、支持requirejs。在" class="headerlink" title="2、支持requirejs。在"></a>2、支持requirejs。在</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.Zepto = Zepto<br><span class="hljs-string">&#x27;$&#x27;</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">window</span> || (<span class="hljs-built_in">window</span>.$ = Zepto)<br></code></pre></td></tr></table></figure>
+<h6 id="后增加如下代码，以便支持requirejs"><a href="#后增加如下代码，以便支持requirejs" class="headerlink" title="后增加如下代码，以便支持requirejs"></a>后增加如下代码，以便支持requirejs</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> ( <span class="hljs-keyword">typeof</span> define === <span class="hljs-string">&quot;function&quot;</span> &amp;&amp; define.amd ) &#123;<br>define( <span class="hljs-string">&quot;zepto&quot;</span>, [], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> Zepto; &#125; );<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="3、加入如下代码，以支持微信等部分浏览器的滑动"><a href="#3、加入如下代码，以支持微信等部分浏览器的滑动" class="headerlink" title="3、加入如下代码，以支持微信等部分浏览器的滑动"></a>3、加入如下代码，以支持微信等部分浏览器的滑动</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">if</span> (touch.x2 &amp;&amp; <span class="hljs-built_in">Math</span>.abs(touch.x1 - touch.x2) &gt; <span class="hljs-number">10</span>)&#123;<br>e.preventDefault()<br>&#125;<br></code></pre></td></tr></table></figure>
+<h6 id="在如下方法中增加"><a href="#在如下方法中增加" class="headerlink" title="在如下方法中增加"></a>在如下方法中增加</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">.on(<span class="hljs-string">&#x27;touchmove MSPointerMove pointermove&#x27;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>&#123;<br><span class="hljs-keyword">if</span>((_isPointerType = isPointerEventType(e, <span class="hljs-string">&#x27;move&#x27;</span>)) &amp;&amp;<br>!isPrimaryTouch(e)) <span class="hljs-keyword">return</span><br>firstTouch = _isPointerType ? e : e.touches[<span class="hljs-number">0</span>]<br>cancelLongTap()<br>touch.x2 = firstTouch.pageX<br>touch.y2 = firstTouch.pageY<br><br>deltaX += <span class="hljs-built_in">Math</span>.abs(touch.x1 - touch.x2)<br>deltaY += <span class="hljs-built_in">Math</span>.abs(touch.y1 - touch.y2)<br><br><span class="hljs-keyword">if</span> (touch.x2 &amp;&amp; <span class="hljs-built_in">Math</span>.abs(touch.x1 - touch.x2) &gt; <span class="hljs-number">10</span>)&#123;<br>e.preventDefault()<br>&#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h3 id="4、因IOS在第三方输入法下不支持onkeyup事件，所以需要使用oninput进行代替onkeyup事件"><a href="#4、因IOS在第三方输入法下不支持onkeyup事件，所以需要使用oninput进行代替onkeyup事件" class="headerlink" title="4、因IOS在第三方输入法下不支持onkeyup事件，所以需要使用oninput进行代替onkeyup事件"></a>4、因IOS在第三方输入法下不支持onkeyup事件，所以需要使用oninput进行代替onkeyup事件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-string">&quot;#user-name&quot;</span>)[<span class="hljs-number">0</span>].oninput = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>that.checkusername();<br>&#125;;<br></code></pre></td></tr></table></figure>
+<h3 id="5、需要使用fastclick代替zepto的tap事件，防止出现穿透问题。"><a href="#5、需要使用fastclick代替zepto的tap事件，防止出现穿透问题。" class="headerlink" title="5、需要使用fastclick代替zepto的tap事件，防止出现穿透问题。"></a>5、需要使用fastclick代替zepto的tap事件，防止出现穿透问题。</h3>
+    </div>
+</div>
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 109;
+        width: 600px !important;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            width: 88%
+        }
+    }
+</style>
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
+    
+    <a href="/2017/02/26/JavaScript%E5%88%A4%E6%96%AD%E8%AE%BE%E5%A4%87%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF/">
+        <div class="last">
+            <span>上一篇</span>
+            <p>JavaScript判断设备和客户端</p>
+        </div>
+    </a>
+    
+
+    
+</div>
+		
+<link rel="stylesheet" href="/css/food.css">
+
+<div class="footer">
+</div>
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            transition: border .5s;
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
+</script>
+<script>
+</script>
+	</body>
+
+</html>

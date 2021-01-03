@@ -25,81 +25,83 @@
 
 <link rel="stylesheet" href="/css/header.css">
 
-	<div class="header">
-		<div class="header-top">
-			<div class="h-left">
-				<a href="/">
-					<img src="/image/logo.png" alt="Quiet">
-				</a>
-			</div>
-			<div class="h-right">
-				<ul>
-					
-						
-								<li>
-									<a href="/">
-										HOME
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/archives">
-										ARCHIVE
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/categories">
-										CATEGORIES
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-							<li class="select">
-								<a href="/tags">
-									TAGS
-								</a>
-								<span class="dot"></span>
-							</li>
-							
-									
-						
-								<li>
-									<a href="/links">
-										LINKS
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-						
-								<li>
-									<a href="/about">
-										ABOUT
-									</a>
-									<span class="dot"></span>
-								</li>
-								
-									
-				</ul>
-			</div>
-			<div class="h-right-close">
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<path fill="none" d="M0 0h24v24H0z" />
-					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
-				</svg>
-			</div>
+<div class="header">
+	<div class="header-top">
+		<div class="h-left">
+			<a href="/">
+				<img src="/image/logo.png" alt="Quiet">
+			</a>
+		</div>
+		<div class="h-right">
+			<ul>
+				
+				
+				<li>
+					<a href="/">
+						HOME
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+				
+				<li>
+					<a href="/archives">
+						ARCHIVE
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+				
+				<li>
+					<a href="/categories">
+						CATEGORIES
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+				
+				<li class="select">
+					<a href="/tags">
+						TAGS
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+				
+				<li>
+					<a href="/links">
+						LINKS
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+				
+				<li>
+					<a href="/about">
+						ABOUT
+					</a>
+					<span class="dot"></span>
+				</li>
+				
+				
+			</ul>
+		</div>
+		<div class="h-right-close">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+				height="24">
+				<path fill="none" d="M0 0h24v24H0z" />
+				<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"
+					fill="rgba(68,68,68,1)" />
+			</svg>
 		</div>
 	</div>
-	<div class="sidebar">
+</div>
+<div class="sidebar">
     <div class="topo">
         <h2>fangzide</h2>
     </div>
@@ -153,7 +155,7 @@
     .topo {
         width: 100%;
         height: 200px;
-        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background: url(https://klfang-1304665615.cos.ap-beijing.myqcloud.com/images/topbg.jpeg) no-repeat;
         background-size: 100% 100%;
         position: relative;
         display: flex;
@@ -225,9 +227,24 @@
 <script>
     $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
 </script>
-		<script>
-			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
-		</script>
+<script>
+	$(function () {
+		$(window).scroll(function () {
+			if ($(document).scrollTop() >
+				100) {
+				$(".header-top").removeClass(
+					"header-move2");
+				$('.header-top').addClass(
+					'header-move1')
+			} else {
+				$(".header-top").removeClass(
+					"header-move1");
+				$('.header-top').addClass(
+					'header-move2')
+			}
+		})
+	});
+</script>
 
 <div class="header-bg">
     <div class="bg-content">
@@ -246,91 +263,91 @@
             
             
             <a href="javascript" class="javascript" value="javascript">
-                <span style='color: #a0b0a3'>javascript <i>7</i> </span>
+                <span style='color: #c12002'>javascript <i>7</i> </span>
             </a>
             
         
             
             
             <a href="事件委托" class="事件委托" value="事件委托">
-                <span style='color: #ac3121'>事件委托 <i>1</i> </span>
+                <span style='color: #cb3240'>事件委托 <i>1</i> </span>
             </a>
             
         
             
             
             <a href="typescript" class="typescript" value="typescript">
-                <span style='color: #ab4024'>typescript <i>2</i> </span>
+                <span style='color: #c34300'>typescript <i>2</i> </span>
             </a>
             
         
             
             
             <a href="Vue" class="Vue" value="Vue">
-                <span style='color: #b2b03c'>Vue <i>1</i> </span>
+                <span style='color: #b4c223'>Vue <i>1</i> </span>
             </a>
             
         
             
             
             <a href="vue" class="vue" value="vue">
-                <span style='color: #113b1c'>vue <i>1</i> </span>
+                <span style='color: #cb203a'>vue <i>1</i> </span>
             </a>
             
         
             
             
             <a href="tools" class="tools" value="tools">
-                <span style='color: #122c0b'>tools <i>5</i> </span>
+                <span style='color: #02a3c0'>tools <i>5</i> </span>
             </a>
             
         
             
             
             <a href="总结" class="总结" value="总结">
-                <span style='color: #113b2b'>总结 <i>1</i> </span>
+                <span style='color: #3bb1cb'>总结 <i>1</i> </span>
             </a>
             
         
             
             
             <a href="移动端" class="移动端" value="移动端">
-                <span style='color: #0a30bc'>移动端 <i>5</i> </span>
+                <span style='color: #14a4b2'>移动端 <i>5</i> </span>
             </a>
             
         
             
             
             <a href="zepto" class="zepto" value="zepto">
-                <span style='color: #0baa14'>zepto <i>1</i> </span>
+                <span style='color: #003c14'>zepto <i>1</i> </span>
             </a>
             
         
             
             
             <a href="webpack" class="webpack" value="webpack">
-                <span style='color: #04c001'>webpack <i>1</i> </span>
+                <span style='color: #a0b100'>webpack <i>1</i> </span>
             </a>
             
         
             
             
             <a href="UES的小demo" class="UES的小demo" value="UES的小demo">
-                <span style='color: #b33c0a'>UES的小demo <i>1</i> </span>
+                <span style='color: #203420'>UES的小demo <i>1</i> </span>
             </a>
             
         
             
             
             <a href="面试" class="面试" value="面试">
-                <span style='color: #4cc114'>面试 <i>1</i> </span>
+                <span style='color: #301131'>面试 <i>1</i> </span>
             </a>
             
         
             
             
             <a href="浏览器" class="浏览器" value="浏览器">
-                <span style='color: #c342c2'>浏览器 <i>1</i> </span>
+                <span style='color: #3c1c02'>浏览器 <i>1</i> </span>
             </a>
             
         
